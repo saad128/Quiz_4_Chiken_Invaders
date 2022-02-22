@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletProjectile;
     public GameObject bulletProjectileClone;
     public GameObject player;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();        
         Movement();
         FireBullet();
     }
@@ -46,6 +48,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             bulletProjectileClone = Instantiate(bulletProjectile, new Vector3(player.transform.position.x, player.transform.position.y + 0.5f, 0), player .transform.rotation) as GameObject;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            gameManager.GameOver();
+            Time.timeScale = 0;
         }
     }
 }

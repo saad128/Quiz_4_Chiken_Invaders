@@ -5,11 +5,11 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
 
-
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -23,6 +23,11 @@ public class BulletMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
+            Destroy(gameObject);
+            gameManager.UpdateScore(5);
+        }
+        if (collision.gameObject.CompareTag("Finish"))
+        {
             Destroy(gameObject);
         }
     }

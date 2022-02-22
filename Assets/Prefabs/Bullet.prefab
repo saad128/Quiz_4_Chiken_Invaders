@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ffd539f9ca2004c93dc2e6741fa414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletProjectile: {fileID: 124534, guid: 7a70adb45063260458b0352db99d899c, type: 3}
 --- !u!61 &-1361102032827695054
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,4 +143,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
